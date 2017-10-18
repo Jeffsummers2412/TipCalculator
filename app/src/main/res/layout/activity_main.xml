@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    tools:context="summers.tipcalculator.MainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <Button
+        android:id="@+id/percentDownButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:text="@string/minus"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/percentTV"
+        android:layout_alignBottom="@+id/percentTV"
+        android:layout_toRightOf="@+id/percentUpButton"
+        android:layout_toEndOf="@+id/percentUpButton" />
+
+    <TextView
+        android:id="@+id/percentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tipLabel"
+        android:layout_alignStart="@+id/tipLabel"
+        android:layout_below="@+id/billET"
+        android:layout_marginTop="41dp"
+
+        android:text="@string/percent"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tipLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/percentLabel"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="61dp"
+        android:text="@string/tip_percent"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/totalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tipLabel"
+        android:layout_alignStart="@+id/tipLabel"
+        android:layout_below="@+id/tipLabel"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/total_Label"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tipPercentTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tipLabel"
+        android:layout_alignBottom="@+id/tipLabel"
+        android:layout_alignLeft="@+id/percentTV"
+        android:layout_alignStart="@+id/percentTV"
+        android:text="@string/tip_amount"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/totalTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/totalLabel"
+        android:layout_alignBottom="@+id/totalLabel"
+        android:layout_alignLeft="@+id/tipPercentTV"
+        android:layout_alignStart="@+id/tipPercentTV"
+        android:text="@string/total_amount"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/percentTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/percentLabel"
+        android:layout_alignBottom="@+id/percentLabel"
+        android:layout_centerHorizontal="true"
+        android:text="@string/percentA"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/billLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp"
+        android:text="@string/bill_label"
+        android:textStyle="bold"
+        tools:textColor="@android:color/holo_orange_dark"
+        tools:textSize="20sp"
+        android:layout_alignBottom="@+id/billET"
+        android:layout_alignLeft="@+id/totalLabel"
+        android:layout_alignStart="@+id/totalLabel" />
+
+
+    <EditText
+        android:id="@+id/billET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="24dp"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="42dp"
+        android:layout_toEndOf="@+id/totalLabel"
+        android:layout_toRightOf="@+id/totalLabel"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        tools:layout_editor_absoluteY="31dp" />
+
+    <Button
+        android:id="@+id/percentUpButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/percentTV"
+        android:layout_alignBottom="@+id/percentTV"
+        android:layout_marginLeft="27dp"
+
+        android:layout_marginStart="27dp"
+        android:layout_toEndOf="@+id/percentTV"
+        android:layout_toRightOf="@+id/percentTV"
+        android:text="@string/plus"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="239dp" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/totalLabel"
+        android:layout_alignStart="@+id/totalLabel"
+        android:layout_below="@+id/totalLabel"
+        android:layout_marginTop="58dp"
+        android:text="Reset" />
+
+</RelativeLayout>
