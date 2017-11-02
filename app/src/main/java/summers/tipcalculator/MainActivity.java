@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
@@ -25,21 +26,20 @@ import android.content.SharedPreferences.Editor;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import java.text.NumberFormat;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
-public class MainActivity extends AppCompatActivity implements OnEditorActionListener, OnKeyListener {
+public class MainActivity extends AppCompatActivity implements OnEditorActionListener, OnKeyListener, OnSeekBarChangeListener {
 
 
 
 
 
     private static final String TAG = "MainActivity";
-    // defone memeber variables for the widgets
+    // define memeber variables for the widgets
     private TextView percentTV;
     private TextView tipPercentTV;
     private TextView totalTV;
     private EditText billET;
-    private Button percentUpButton;
-    private Button percentDownButton;
     private Button resetButton;
     private RadioButton noneRadio;
     private RadioButton tipRadio;
@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
     private TextView perPersonLabel;
     private TextView perPersonTV;
     private RadioGroup radioGroup;
+    private SeekBar seekBar;
+    private Button applyButton;
 
 
     //define Rounding Constants
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
     private int rounding = ROUND_NONE;
     private int split = 1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +75,6 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
         tipPercentTV = (TextView) findViewById(R.id.tipPercentTV);
         totalTV = (TextView) findViewById(R.id.totalTV);
         billET = (EditText) findViewById(R.id.billET);
-        percentUpButton = (Button) findViewById(R.id.percentUpButton);
-        percentDownButton = (Button) findViewById(R.id.percentDownButton);
         resetButton = (Button) findViewById(R.id.resetButton);
         noneRadio = (RadioButton) findViewById(R.id.NoneRadioButton);
         tipRadio = (RadioButton) findViewById(R.id.tipRadioButton);
@@ -82,6 +83,11 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
         perPersonLabel = (TextView) findViewById(R.id.perPersonLabel);
         perPersonTV = (TextView) findViewById(R.id.perPersonTV);
         radioGroup = (RadioGroup) findViewById(R.id.roundingRadioGroup);
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
+        applyButton = (Button) findViewById(R.id.applyButton);
+
+        //set the seek bar to OnProgresschange
+        seekBar.setOnSeekBarChangeListener(this);
 
         //set array adapter for spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -96,9 +102,9 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
 
         //Named Class As Listener
         ClickListener clickListener = new ClickListener();
-        percentUpButton.setOnClickListener(clickListener);
-        percentDownButton.setOnClickListener(clickListener);
+
         resetButton.setOnClickListener(clickListener);
+        applyButton.setOnClickListener(clickListener);
 
         //Anonymous Class as Listener
         radioGroup.setOnCheckedChangeListener(checkedChangeListener);
@@ -155,19 +161,27 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
         return false;
     }
 
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        percentTV.setText(progress + "%");
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        int progress = seekBar.getProgress();
+        tipPercent = (float) progress / 100;
+    }
+
     class ClickListener implements OnClickListener{
         @Override
         public void onClick(View v) {
 
             switch(v.getId()){
-                case R.id.percentUpButton:
-                    tipPercent = tipPercent + .01f;
-                    calculateAndDisplay();
-                    break;
-                case R.id.percentDownButton:
-                    tipPercent = tipPercent - .01f;
-                    calculateAndDisplay();
-                    break;
                 case R.id.resetButton:
                     tipPercent = .15f;
                     billET.setText("");
@@ -175,6 +189,8 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
                     totalTV.setText("");
                     calculateAndDisplay();
                     break;
+                case R.id.applyButton:
+                    calculateAndDisplay();
 
             }
 
@@ -221,6 +237,7 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
         // get bill amount
         billAmountString = billET.getText().toString();
         float billAmount;
+
 
         if(billAmountString.equals("")){
             billAmount = 0;
@@ -307,5 +324,6 @@ public class MainActivity extends AppCompatActivity implements OnEditorActionLis
         int position = split - 1;
         splitSpinner.setSelection(position);
     }
+
 
 }

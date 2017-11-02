@@ -12,48 +12,33 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <Button
 
-        android:id="@+id/percentDownButton"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:text="@string/minus"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/percentTV"
-        android:layout_alignBottom="@+id/percentTV"
-        android:layout_toRightOf="@+id/percentUpButton"
-        android:layout_toEndOf="@+id/percentUpButton" />
-
-    <TextView
+        <TextView
         android:id="@+id/percentLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="35dp"
 
         android:text="@string/percent"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_below="@+id/billLabel"
-        android:layout_alignLeft="@+id/tipLabel"
-        android:layout_alignStart="@+id/tipLabel" />
+            android:layout_below="@+id/billLabel"
+            android:layout_alignLeft="@+id/billLabel"
+            android:layout_alignStart="@+id/billLabel" />
 
     <TextView
         android:id="@+id/tipLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
         android:layout_marginTop="19dp"
         android:text="@string/tip_percent"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_below="@+id/percentUpButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/seekBar"
+        android:layout_alignLeft="@+id/percentLabel"
+        android:layout_alignStart="@+id/percentLabel" />
 
     <TextView
         android:id="@+id/totalLabel"
@@ -120,10 +105,12 @@
             android:textStyle="bold"
             tools:textColor="@android:color/holo_orange_dark"
             tools:textSize="20sp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
             android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/percentLabel"
-            android:layout_alignStart="@+id/percentLabel" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/billET"
@@ -133,26 +120,11 @@
         android:ems="10"
         android:inputType="numberDecimal"
         tools:layout_editor_absoluteY="31dp"
-        android:layout_above="@+id/percentLabel"
+        android:layout_alignBottom="@+id/billLabel"
         android:layout_toRightOf="@+id/percentLabel"
         android:layout_toEndOf="@+id/percentLabel" />
 
-    <Button
-        android:id="@+id/percentUpButton"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_alignBaseline="@+id/percentTV"
-        android:layout_alignBottom="@+id/percentTV"
-        android:layout_marginLeft="27dp"
-
-        android:layout_marginStart="27dp"
-        android:layout_toEndOf="@+id/percentTV"
-        android:layout_toRightOf="@+id/percentTV"
-        android:text="@string/plus"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="239dp" />
-
-    <Button
+        <Button
         android:id="@+id/resetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -165,30 +137,31 @@
         android:layout_alignParentEnd="true" />
 
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/split"
 
-
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="@string/split"
-           android:textSize="20sp"
-           android:textStyle="bold"
-           android:id="@+id/textView"
-
-           android:layout_alignTop="@+id/roundingRadioGroup"
-           android:layout_alignLeft="@+id/perPersonLabel"
-           android:layout_alignStart="@+id/perPersonLabel" />
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_alignTop="@+id/roundingRadioGroup"
+            android:layout_toRightOf="@+id/tipLabel"
+            android:layout_toEndOf="@+id/tipLabel" />
 
         <TextView
+            android:id="@+id/perPersonLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/per_person"
+            android:textColor="@android:color/holo_orange_dark"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:id="@+id/perPersonLabel"
             android:layout_alignBottom="@+id/roundingRadioGroup"
-            android:layout_toLeftOf="@+id/percentDownButton"
-            android:layout_toStartOf="@+id/percentDownButton" />
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_alignTop="@+id/perPersonTV" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -196,10 +169,11 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:id="@+id/perPersonTV"
-            android:layout_alignBaseline="@+id/perPersonLabel"
-            android:layout_alignBottom="@+id/perPersonLabel"
-            android:layout_alignLeft="@+id/percentDownButton"
-            android:layout_alignStart="@+id/percentDownButton" />
+            android:layout_alignBottom="@+id/roundingRadioGroup"
+            android:layout_toRightOf="@+id/perPersonLabel"
+            android:layout_toEndOf="@+id/perPersonLabel"
+            android:layout_marginLeft="33dp"
+            android:layout_marginStart="33dp" />
 
 
 
@@ -210,9 +184,7 @@
             android:id="@+id/spinner"
             android:layout_alignTop="@+id/textView"
             android:layout_alignRight="@+id/perPersonTV"
-            android:layout_alignEnd="@+id/perPersonTV"
-            android:layout_toRightOf="@+id/perPersonLabel"
-            android:layout_toEndOf="@+id/perPersonLabel">
+            android:layout_alignEnd="@+id/perPersonTV">
 
         </Spinner>
 
@@ -220,13 +192,14 @@
             android:id="@+id/roundingTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rounding"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="13dp"
-            android:layout_below="@+id/totalLabel"
             android:layout_alignLeft="@+id/totalLabel"
-            android:layout_alignStart="@+id/totalLabel" />
+            android:layout_alignStart="@+id/totalLabel"
+            android:layout_below="@+id/totalLabel"
+            android:layout_marginTop="13dp"
+            android:text="@string/rounding"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
          <RadioGroup
              android:id="@+id/roundingRadioGroup"
@@ -259,7 +232,7 @@
 
         <RadioButton
             android:id="@+id/tipRadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="@string/tip" />
@@ -267,15 +240,25 @@
 
         <SeekBar
             android:id="@+id/seekBar"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:max="30"
+            android:progress="15"
+            android:layout_alignTop="@+id/percentTV"
+            android:layout_toRightOf="@+id/tipPercentTV"
+            android:layout_toEndOf="@+id/tipPercentTV" />
+
+        <Button
+            android:id="@+id/applyButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tipPercentTV"
-            android:layout_alignLeft="@+id/percentUpButton"
-            android:layout_alignStart="@+id/percentUpButton"
-            android:layout_marginLeft="22dp"
-            android:layout_marginStart="22dp"
-            android:layout_alignRight="@+id/spinner"
-            android:layout_alignEnd="@+id/spinner" />
+            android:text="Apply"
+            android:layout_above="@+id/totalTV"
+            android:layout_toRightOf="@+id/perPersonLabel"
+            android:layout_toEndOf="@+id/perPersonLabel"
+            android:layout_marginLeft="21dp"
+            android:layout_marginStart="21dp" />
+
     </RelativeLayout>
 
 </ScrollView>
